@@ -36,20 +36,79 @@ var Counter = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).call(this));
 
-        _this.state = {};
+        _this.clickedAdd = function () {
+            _this.setState({
+                currentNumber: _this.state.currentNumber + 1
+            }, function () {
+                console.log(_this.state);
+            });
+        };
+
+        _this.clickedMinus = function () {
+            _this.setState({
+                currentNumber: _this.state.currentNumber - 1
+            });
+        };
+
+        _this.counterRun = function () {
+            setInterval(function () {
+                _this.setState({
+                    currentNumber: _this.state.currentNumber + 1
+                });
+            }, 1000);
+        };
+
+        _this.state = { status: 'manual',
+            currentNumber: 0 };
         return _this;
     }
 
     _createClass(Counter, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            console.log('component will mount started');
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            if (this.props.status == 'auto') {
+                this.setState({
+                    status: this.props.status
+                }, function () {
+                    _this2.counterRun();
+                });
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
+            var styleCounterComp = {
+                width: '100%',
+                maxWidth: '400px',
+                margin: '0 auto'
+            };
+
+            var styleNumber = {
+                border: '3px solid black',
+                padding: '20px',
+                fontSize: '2rem',
+                fontWeight: '900',
+                textAlign: 'center'
+            };
+
+            var styleButtons = {
+                display: this.props.status == 'auto' ? 'none' : 'flex'
+            };
+
             return _react2.default.createElement(
                 'div',
                 { className: 'counter-comp', style: styleCounterComp },
                 _react2.default.createElement(
                     'div',
                     { className: 'Number', style: styleNumber },
-                    '0'
+                    this.state.currentNumber
                 ),
                 _react2.default.createElement(
                     'div',
@@ -60,7 +119,8 @@ var Counter = function (_Component) {
                             action: 'minus',
                             fontColor: 'white',
                             hoverColor: 'red',
-                            backgroundColor: 'black'
+                            backgroundColor: 'black',
+                            trigger: this.clickedMinus
                         },
                         '-'
                     ),
@@ -70,7 +130,8 @@ var Counter = function (_Component) {
                             action: 'plus',
                             fontColor: 'black',
                             hoverColor: 'purple',
-                            backgroundColor: 'white'
+                            backgroundColor: 'white',
+                            trigger: this.clickedAdd
                         },
                         '+'
                     )
@@ -83,25 +144,6 @@ var Counter = function (_Component) {
 }(_react.Component);
 
 exports.default = Counter;
-
-
-var styleCounterComp = {
-    width: '100%',
-    maxWidth: '400px',
-    margin: '0 auto'
-};
-
-var styleNumber = {
-    border: '3px solid black',
-    padding: '20px',
-    fontSize: '2rem',
-    fontWeight: '900',
-    textAlign: 'center'
-};
-
-var styleButtons = {
-    display: 'flex'
-};
 
 /***/ }),
 
@@ -151,7 +193,7 @@ var App = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'container' },
-                _react2.default.createElement(_Counter2.default, null)
+                _react2.default.createElement(_Counter2.default, { status: 'auto' })
             );
         }
     }]);
@@ -211,6 +253,7 @@ var Button = function (_Component) {
         key: 'render',
         value: function render() {
             var styleButton = {
+                color: this.props.fontColor,
                 width: '50%',
                 border: '3px solid black',
                 padding: '20px',
@@ -226,7 +269,8 @@ var Button = function (_Component) {
                 { className: 'button ' + this.props.action + '\n            ',
                     style: styleButton,
                     onMouseEnter: this.toggleHover,
-                    onMouseLeave: this.toggleHover
+                    onMouseLeave: this.toggleHover,
+                    onClick: this.props.trigger
                 },
                 this.props.children
             );

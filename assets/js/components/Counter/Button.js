@@ -14,6 +14,7 @@ toggleHover = () => {
 }
 render() {
     const styleButton = {
+    color: this.props.fontColor,
     width: '50%',
     border: '3px solid black',
     padding: '20px',
@@ -32,6 +33,7 @@ render() {
             style={styleButton}
             onMouseEnter={this.toggleHover}
             onMouseLeave={this.toggleHover}
+            onClick={this.props.trigger}
             >
             {this.props.children}
                 
