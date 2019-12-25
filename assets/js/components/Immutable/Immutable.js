@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import update from 'immutability-helper';
 
 export default class Immutable extends Component {
     constructor() {
@@ -22,12 +23,21 @@ export default class Immutable extends Component {
         };
     }
     clickedBtn = () => {
-        console.log(this.state)
+        console.log(this.state);
     
-    
-    const newState = {
-        names: this.state.names.slice().sort()
-        };
+    const newState= update(this.state, {
+        background: { $set: 'red'},
+        teachers: {
+            $set: ['Billy', 'Jordan']
+        },
+        user: {
+            grades: {
+                math: {
+                    $set: 'C+'
+                }
+            }
+        }
+    });
         
         this.setState(newState, () => {
             console.log(this.state);
@@ -35,7 +45,7 @@ export default class Immutable extends Component {
         console.log('Clicked BTN');
     };
     changeToActive = () => {
-        if (this.state.both[0] == 'Billy') {
+        if (this.state.teachers[0] == 'Billy') {
             return 'active';
         } else {
             return '';
