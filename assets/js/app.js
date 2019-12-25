@@ -1,6 +1,7 @@
 import React, { Component } from 'react' 
 import ReactDOM from 'react-dom'
 import Counter from './components/Counter/Counter.js'
+import Immutable from './components/Immutable/Immutable.js'
 
 class App extends Component {
     constructor(){
@@ -12,7 +13,8 @@ class App extends Component {
 render() {
         return (
             <div className={'container'}>
-                <Counter status="auto" />
+            <Immutable />
+                {/* <Counter status="auto" /> */}
             </div>
         );
     }

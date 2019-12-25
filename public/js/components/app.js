@@ -12,11 +12,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(32);
+var _react = __webpack_require__(24);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Button = __webpack_require__(85);
+var _Button = __webpack_require__(86);
 
 var _Button2 = _interopRequireDefault(_Button);
 
@@ -147,7 +147,103 @@ exports.default = Counter;
 
 /***/ }),
 
-/***/ 84:
+/***/ 83:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(24);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Immutable = function (_Component) {
+    _inherits(Immutable, _Component);
+
+    function Immutable() {
+        _classCallCheck(this, Immutable);
+
+        var _this = _possibleConstructorReturn(this, (Immutable.__proto__ || Object.getPrototypeOf(Immutable)).call(this));
+
+        _this.clickedBtn = function () {
+            console.log(_this.state);
+
+            var newState = {
+                names: _this.state.names.slice().sort()
+            };
+
+            _this.setState(newState, function () {
+                console.log(_this.state);
+            });
+            console.log('Clicked BTN');
+        };
+
+        _this.changeToActive = function () {
+            if (_this.state.both[0] == 'Billy') {
+                return 'active';
+            } else {
+                return '';
+            }
+        };
+
+        _this.state = {
+            background: 'black',
+            names: ['Cindy', 'Billy', 'Lisa', 'John'],
+            both: [],
+            teachers: ['Cam', 'Brad', 'Jennifer'],
+            user: {
+                name: 'JC',
+                age: 25,
+                location: 'DE',
+                grades: {
+                    math: 'B',
+                    english: 'A',
+                    science: 'B',
+                    history: 'A'
+                }
+            }
+        };
+        return _this;
+    }
+
+    _createClass(Immutable, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { id: 'Immutable-comp' },
+                _react2.default.createElement('div', { className: 'box ' + this.changeToActive() }),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'button', onClick: this.clickedBtn },
+                    ' Press Me'
+                )
+            );
+        }
+    }]);
+
+    return Immutable;
+}(_react.Component);
+
+exports.default = Immutable;
+
+/***/ }),
+
+/***/ 85:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -155,17 +251,21 @@ exports.default = Counter;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(32);
+var _react = __webpack_require__(24);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(83);
+var _reactDom = __webpack_require__(84);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _Counter = __webpack_require__(82);
 
 var _Counter2 = _interopRequireDefault(_Counter);
+
+var _Immutable = __webpack_require__(83);
+
+var _Immutable2 = _interopRequireDefault(_Immutable);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -193,7 +293,7 @@ var App = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'container' },
-                _react2.default.createElement(_Counter2.default, { status: 'auto' })
+                _react2.default.createElement(_Immutable2.default, null)
             );
         }
     }]);
@@ -205,7 +305,7 @@ _reactDom2.default.render(_react2.default.createElement(App, null), document.get
 
 /***/ }),
 
-/***/ 85:
+/***/ 86:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -217,7 +317,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(32);
+var _react = __webpack_require__(24);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -284,4 +384,4 @@ exports.default = Button;
 
 /***/ })
 
-},[84]);
+},[85]);
