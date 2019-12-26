@@ -185,21 +185,14 @@ var Immutable = function (_Component) {
 
         _this.clickedBtn = function () {
             console.log(_this.state);
-
-            var newState = (0, _immutabilityHelper2.default)(_this.state, {
-                background: { $set: 'red' },
-                teachers: {
-                    $set: ['Billy', 'Jordan']
-                },
-                user: {
-                    grades: {
-                        math: {
-                            $set: 'C+'
-                        }
-                    }
-                }
+            var newTeachers = (0, _immutabilityHelper2.default)(_this.state.teachers, {
+                $splice: [[2]]
             });
 
+            var newState = (0, _immutabilityHelper2.default)(_this.state, {
+                teachers: { $set: newTeachers }
+            });
+            console.log(newTeachers);
             _this.setState(newState, function () {
                 console.log(_this.state);
             });
@@ -207,7 +200,7 @@ var Immutable = function (_Component) {
         };
 
         _this.changeToActive = function () {
-            if (_this.state.teachers[0] == 'Billy') {
+            if (_this.state.teachers[2] !== 'Jennifer') {
                 return 'active';
             } else {
                 return '';

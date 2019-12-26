@@ -24,28 +24,22 @@ export default class Immutable extends Component {
     }
     clickedBtn = () => {
         console.log(this.state);
+        const newTeachers = update
+        (this.state.teachers, {
+            $splice: [[2]]
+        });
     
     const newState= update(this.state, {
-        background: { $set: 'red'},
-        teachers: {
-            $set: ['Billy', 'Jordan']
-        },
-        user: {
-            grades: {
-                math: {
-                    $set: 'C+'
-                }
-            }
-        }
+        teachers: { $set: newTeachers }
     });
-        
+        console.log(newTeachers);
         this.setState(newState, () => {
             console.log(this.state);
         });
         console.log('Clicked BTN');
     };
     changeToActive = () => {
-        if (this.state.teachers[0] == 'Billy') {
+        if (this.state.teachers[2] !== 'Jennifer') {
             return 'active';
         } else {
             return '';
