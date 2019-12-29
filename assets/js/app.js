@@ -1,8 +1,8 @@
-import React, { Component } from 'react' 
-import ReactDOM from 'react-dom'
+import React, { Component } from 'react'; 
+import ReactDOM from 'react-dom';
 // import Counter from './components/Counter/Counter.js'
 // import Immutable from './components/Immutable/Immutable.js'
-import BillsApp from './components/BillsApp/BillsApp'
+import BillsApp from './components/BillsApp/BillsApp';
 
 class App extends Component {
     constructor(){

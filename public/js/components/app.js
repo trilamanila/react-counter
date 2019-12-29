@@ -12,13 +12,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(24);
+var _react = __webpack_require__(20);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Button = __webpack_require__(86);
+var _Header = __webpack_require__(87);
 
-var _Button2 = _interopRequireDefault(_Button);
+var _Header2 = _interopRequireDefault(_Header);
+
+var _AllBills = __webpack_require__(85);
+
+var _AllBills2 = _interopRequireDefault(_AllBills);
+
+var _FloatingMenu = __webpack_require__(86);
+
+var _FloatingMenu2 = _interopRequireDefault(_FloatingMenu);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28,229 +36,39 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Counter = function (_Component) {
-    _inherits(Counter, _Component);
+var BillsApp = function (_Component) {
+    _inherits(BillsApp, _Component);
 
-    function Counter() {
-        _classCallCheck(this, Counter);
+    function BillsApp() {
+        _classCallCheck(this, BillsApp);
 
-        var _this = _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).call(this));
+        var _this = _possibleConstructorReturn(this, (BillsApp.__proto__ || Object.getPrototypeOf(BillsApp)).call(this));
 
-        _this.clickedAdd = function () {
-            _this.setState({
-                currentNumber: _this.state.currentNumber + 1
-            }, function () {
-                console.log(_this.state);
-            });
-        };
-
-        _this.clickedMinus = function () {
-            _this.setState({
-                currentNumber: _this.state.currentNumber - 1
-            });
-        };
-
-        _this.counterRun = function () {
-            setInterval(function () {
-                _this.setState({
-                    currentNumber: _this.state.currentNumber + 1
-                });
-            }, 1000);
-        };
-
-        _this.state = { status: 'manual',
-            currentNumber: 0 };
+        _this.state = {};
         return _this;
     }
 
-    _createClass(Counter, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {
-            console.log('component will mount started');
-        }
-    }, {
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            var _this2 = this;
-
-            if (this.props.status == 'auto') {
-                this.setState({
-                    status: this.props.status
-                }, function () {
-                    _this2.counterRun();
-                });
-            }
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var styleCounterComp = {
-                width: '100%',
-                maxWidth: '400px',
-                margin: '0 auto'
-            };
-
-            var styleNumber = {
-                border: '3px solid black',
-                padding: '20px',
-                fontSize: '2rem',
-                fontWeight: '900',
-                textAlign: 'center'
-            };
-
-            var styleButtons = {
-                display: this.props.status == 'auto' ? 'none' : 'flex'
-            };
-
-            return _react2.default.createElement(
-                'div',
-                { className: 'counter-comp', style: styleCounterComp },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'Number', style: styleNumber },
-                    this.state.currentNumber
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'buttons', style: styleButtons },
-                    _react2.default.createElement(
-                        _Button2.default,
-                        {
-                            action: 'minus',
-                            fontColor: 'white',
-                            hoverColor: 'red',
-                            backgroundColor: 'black',
-                            trigger: this.clickedMinus
-                        },
-                        '-'
-                    ),
-                    _react2.default.createElement(
-                        _Button2.default,
-                        {
-                            action: 'plus',
-                            fontColor: 'black',
-                            hoverColor: 'purple',
-                            backgroundColor: 'white',
-                            trigger: this.clickedAdd
-                        },
-                        '+'
-                    )
-                )
-            );
-        }
-    }]);
-
-    return Counter;
-}(_react.Component);
-
-exports.default = Counter;
-
-/***/ }),
-
-/***/ 83:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(24);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _immutabilityHelper = __webpack_require__(102);
-
-var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Immutable = function (_Component) {
-    _inherits(Immutable, _Component);
-
-    function Immutable() {
-        _classCallCheck(this, Immutable);
-
-        var _this = _possibleConstructorReturn(this, (Immutable.__proto__ || Object.getPrototypeOf(Immutable)).call(this));
-
-        _this.clickedBtn = function () {
-            console.log(_this.state);
-            var newTeachers = (0, _immutabilityHelper2.default)(_this.state.teachers, {
-                $splice: [[2]]
-            });
-
-            var newState = (0, _immutabilityHelper2.default)(_this.state, {
-                teachers: { $set: newTeachers }
-            });
-            console.log(newTeachers);
-            _this.setState(newState, function () {
-                console.log(_this.state);
-            });
-            console.log('Clicked BTN');
-        };
-
-        _this.changeToActive = function () {
-            if (_this.state.teachers[2] !== 'Jennifer') {
-                return 'active';
-            } else {
-                return '';
-            }
-        };
-
-        _this.state = {
-            background: 'black',
-            names: ['Cindy', 'Billy', 'Lisa', 'John'],
-            both: [],
-            teachers: ['Cam', 'Brad', 'Jennifer'],
-            user: {
-                name: 'JC',
-                age: 25,
-                location: 'DE',
-                grades: {
-                    math: 'B',
-                    english: 'A',
-                    science: 'B',
-                    history: 'A'
-                }
-            }
-        };
-        return _this;
-    }
-
-    _createClass(Immutable, [{
+    _createClass(BillsApp, [{
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                { id: 'Immutable-comp' },
-                _react2.default.createElement('div', { className: 'box ' + this.changeToActive() }),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'button', onClick: this.clickedBtn },
-                    ' Press Me'
-                )
+                { id: 'BillsApp' },
+                _react2.default.createElement(_Header2.default, null),
+                _react2.default.createElement(_AllBills2.default, null),
+                _react2.default.createElement(_FloatingMenu2.default, null)
             );
         }
     }]);
 
-    return Immutable;
+    return BillsApp;
 }(_react.Component);
 
-exports.default = Immutable;
+exports.default = BillsApp;
 
 /***/ }),
 
-/***/ 85:
+/***/ 84:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -258,21 +76,17 @@ exports.default = Immutable;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(24);
+var _react = __webpack_require__(20);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(84);
+var _reactDom = __webpack_require__(83);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _Counter = __webpack_require__(82);
+var _BillsApp = __webpack_require__(82);
 
-var _Counter2 = _interopRequireDefault(_Counter);
-
-var _Immutable = __webpack_require__(83);
-
-var _Immutable2 = _interopRequireDefault(_Immutable);
+var _BillsApp2 = _interopRequireDefault(_BillsApp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -281,6 +95,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// import Counter from './components/Counter/Counter.js'
+// import Immutable from './components/Immutable/Immutable.js'
+
 
 var App = function (_Component) {
     _inherits(App, _Component);
@@ -300,7 +117,7 @@ var App = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'container' },
-                _react2.default.createElement(_Immutable2.default, null)
+                _react2.default.createElement(_BillsApp2.default, null)
             );
         }
     }]);
@@ -309,6 +126,104 @@ var App = function (_Component) {
 }(_react.Component);
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
+
+/***/ }),
+
+/***/ 85:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(20);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AllBills = function (_Component) {
+    _inherits(AllBills, _Component);
+
+    function AllBills() {
+        _classCallCheck(this, AllBills);
+
+        var _this = _possibleConstructorReturn(this, (AllBills.__proto__ || Object.getPrototypeOf(AllBills)).call(this));
+
+        _this.state = {};
+        return _this;
+    }
+
+    _createClass(AllBills, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "section",
+                { id: "AllBills" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "container" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "total-bills" },
+                        _react2.default.createElement(
+                            "div",
+                            { className: "text" },
+                            "Total Amount:"
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "number" },
+                            "$874"
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "ul",
+                        { className: "bills-list" },
+                        _react2.default.createElement(
+                            "li",
+                            { className: "bill" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "company" },
+                                _react2.default.createElement(
+                                    "div",
+                                    { className: "logo" },
+                                    _react2.default.createElement("img", { src: "img/billsapp/netflixlogo.jpeg" })
+                                ),
+                                _react2.default.createElement(
+                                    "div",
+                                    { className: "title" },
+                                    "netflix"
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "price" },
+                                "-$9.99"
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return AllBills;
+}(_react.Component);
+
+exports.default = AllBills;
 
 /***/ }),
 
@@ -324,7 +239,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(24);
+var _react = __webpack_require__(20);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -336,59 +251,156 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Button = function (_Component) {
-    _inherits(Button, _Component);
+var FloatingMenu = function (_Component) {
+    _inherits(FloatingMenu, _Component);
 
-    function Button() {
-        _classCallCheck(this, Button);
+    function FloatingMenu() {
+        _classCallCheck(this, FloatingMenu);
 
-        var _this = _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).call(this));
+        var _this = _possibleConstructorReturn(this, (FloatingMenu.__proto__ || Object.getPrototypeOf(FloatingMenu)).call(this));
 
-        _this.toggleHover = function () {
-            _this.setState({
-                hover: !_this.state.hover
-            });
-        };
-
-        _this.state = {
-            hover: false
-        };
+        _this.state = {};
         return _this;
     }
 
-    _createClass(Button, [{
-        key: 'render',
+    _createClass(FloatingMenu, [{
+        key: "render",
         value: function render() {
-            var styleButton = {
-                color: this.props.fontColor,
-                width: '50%',
-                border: '3px solid black',
-                padding: '20px',
-                fontSize: '2rem',
-                fontWeight: '900',
-                textAlign: 'center',
-                cursor: 'pointer',
-                transition: 'all .6s ease-in-out',
-                background: this.state.hover ? this.props.hoverColor : this.props.backgroundColor
-            };
             return _react2.default.createElement(
-                'div',
-                { className: 'button ' + this.props.action + '\n            ',
-                    style: styleButton,
-                    onMouseEnter: this.toggleHover,
-                    onMouseLeave: this.toggleHover,
-                    onClick: this.props.trigger
-                },
-                this.props.children
+                "nav",
+                { id: "FloatingMenu" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "link" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "icon" },
+                        _react2.default.createElement("i", { className: "fa fa-credit-card", "aria-hidden": "true" })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "text" },
+                        "Spend"
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "link" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "icon" },
+                        _react2.default.createElement("i", { className: "fa fa-university", "aria-hidden": "true" })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "text" },
+                        "Save"
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "link" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "icon" },
+                        _react2.default.createElement("i", { className: "fa fa-exchange", "aria-hidden": "true" })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "text" },
+                        "Transfer"
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "link" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "icon" },
+                        _react2.default.createElement("i", { className: "fa fa-cog", "aria-hidden": "true" })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "text" },
+                        "Settings"
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "add-button" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "icon" },
+                        _react2.default.createElement("i", { className: "fa fa-plus", "aria-hidden": "true" })
+                    )
+                )
             );
         }
     }]);
 
-    return Button;
+    return FloatingMenu;
 }(_react.Component);
 
-exports.default = Button;
+exports.default = FloatingMenu;
+
+/***/ }),
+
+/***/ 87:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(20);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Header = function (_Component) {
+    _inherits(Header, _Component);
+
+    function Header() {
+        _classCallCheck(this, Header);
+
+        var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this));
+
+        _this.state = {};
+        return _this;
+    }
+
+    _createClass(Header, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'header',
+                null,
+                _react2.default.createElement(
+                    'h2',
+                    null,
+                    'Bills App'
+                )
+            );
+        }
+    }]);
+
+    return Header;
+}(_react.Component);
+
+exports.default = Header;
 
 /***/ })
 
-},[85]);
+},[84]);
