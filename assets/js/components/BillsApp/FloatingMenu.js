@@ -32,10 +32,12 @@ render() {
                     </div>
                 <div className="text">Settings</div>
             </div>
-            <div className="add-button">
+            <div className="link">
+            <div className="add-button" onClick={this.props.clickedAddBillBtn}>
                     <div className="icon">
                         <i className="fa fa-plus" aria-hidden="true"></i>
                     </div>
+                </div>
             </div>
         </nav>
         );    
