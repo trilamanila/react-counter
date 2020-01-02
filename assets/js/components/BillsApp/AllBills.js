@@ -19,6 +19,10 @@ export default class AllBills extends Component {
                         <div className="title">{bill.business_name}</div>
                         </div>
                         <div className="price">-${bill.price}</div>
+                        <div className="buttons">
+                        <div className="paid"><i className="fa fa-check" aria-hidden="true"></i></div>
+                        <div className="delete"><i className="fa fa-trash-o" aria-hidden="true"></i></div>
+                        </div>
                     </li>
             );
         });

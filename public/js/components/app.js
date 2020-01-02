@@ -72,7 +72,10 @@ var BillsApp = function (_Component) {
 
         _this.state = {
             addBillOpen: false,
-            allBills: []
+            allBills: [{
+                business_name: 'geico',
+                price: 50
+            }]
         };
         return _this;
     }
@@ -348,6 +351,20 @@ var AllBills = function (_Component) {
                             { className: "price" },
                             "-$",
                             bill.price
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "buttons" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "paid" },
+                                _react2.default.createElement("i", { className: "fa fa-check", "aria-hidden": "true" })
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "delete" },
+                                _react2.default.createElement("i", { className: "fa fa-trash-o", "aria-hidden": "true" })
+                            )
                         )
                     );
                 });
