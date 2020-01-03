@@ -59,7 +59,7 @@ export default class BillsApp extends Component {
         const allBills = this.state.allBills;
         allBills.splice(billIndex, 1);
         const newState = update(this.state, { allBills: { $set: allBills } });
-        this.setState(newState;)
+        this.setState(newState);
 
         console.log(billIndex);
     };
