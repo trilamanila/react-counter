@@ -70,11 +70,34 @@ var BillsApp = function (_Component) {
             });
         };
 
+        _this.changeBillStatus = function (billIndex) {
+            var allBills = _this.state.allBills;
+            var bill = allBills[billIndex];
+            if (bill.status == 'unpaid') {
+                bill.status = 'paid';
+            } else {
+                bill.status = 'unpaid';
+            }
+
+            var newState = (0, _immutabilityHelper2.default)(_this.state, { allBills: {
+                    $set: allBills
+                }
+            });
+            _this.setState(newState, function () {
+                console.log(_this.state);
+            });
+        };
+
+        _this.deleteBill = function (billIndex) {
+            console.log(billIndex);
+        };
+
         _this.state = {
             addBillOpen: false,
             allBills: [{
                 business_name: 'geico',
-                price: 50
+                price: 50,
+                status: 'paid'
             }]
         };
         return _this;
@@ -87,7 +110,9 @@ var BillsApp = function (_Component) {
                 'div',
                 { id: 'BillsApp' },
                 _react2.default.createElement(_Header2.default, null),
-                _react2.default.createElement(_AllBills2.default, { allBills: this.state.allBills }),
+                _react2.default.createElement(_AllBills2.default, { allBills: this.state.allBills, changeBillStatus: this.changeBillStatus,
+                    deleteBill: this.deleteBill
+                }),
                 _react2.default.createElement(_AddBill2.default, {
                     addBillOpen: this.state.addBillOpen,
                     saveBill: this.saveBill
@@ -211,7 +236,7 @@ var AllBills = function (_Component) {
             event.preventDefault();
             _this.setState({
                 business_name: '',
-                price: 0
+                price: ''
             });
             _this.props.saveBill(_this.state);
             console.log(_this.state);
@@ -219,7 +244,8 @@ var AllBills = function (_Component) {
 
         _this.state = {
             business_name: '',
-            price: 0
+            price: '',
+            status: 'unpaid'
         };
         return _this;
     }
@@ -330,52 +356,61 @@ var AllBills = function (_Component) {
             if (bills.length > 0) {
                 return bills.map(function (bill, index) {
                     return _react2.default.createElement(
-                        "li",
-                        { className: "bill", key: index },
+                        'li',
+                        {
+                            className: 'bill ' + (bill.status == 'paid' ? 'active' : ''),
+                            key: index
+                        },
                         _react2.default.createElement(
-                            "div",
-                            { className: "company" },
+                            'div',
+                            { className: 'company' },
                             _react2.default.createElement(
-                                "div",
-                                { className: "logo" },
-                                _react2.default.createElement("img", { src: "https://cdn3.iconfinder.com/data/icons/industrial-and-construction-1-3/68/44-512.png" })
+                                'div',
+                                { className: 'logo' },
+                                _react2.default.createElement('img', { src: 'https://cdn3.iconfinder.com/data/icons/industrial-and-construction-1-3/68/44-512.png' })
                             ),
                             _react2.default.createElement(
-                                "div",
-                                { className: "title" },
+                                'div',
+                                { className: 'title' },
                                 bill.business_name
                             )
                         ),
                         _react2.default.createElement(
-                            "div",
-                            { className: "price" },
-                            "-$",
+                            'div',
+                            { className: 'price' },
+                            '-$',
                             bill.price
                         ),
                         _react2.default.createElement(
-                            "div",
-                            { className: "buttons" },
+                            'div',
+                            { className: 'buttons' },
                             _react2.default.createElement(
-                                "div",
-                                { className: "paid" },
-                                _react2.default.createElement("i", { className: "fa fa-check", "aria-hidden": "true" })
+                                'div',
+                                {
+                                    className: 'paid',
+                                    onClick: _this.props.changeBillStatus.bind(null, index)
+                                },
+                                _react2.default.createElement('i', { className: 'fa fa-check', 'aria-hidden': 'true' })
                             ),
                             _react2.default.createElement(
-                                "div",
-                                { className: "delete" },
-                                _react2.default.createElement("i", { className: "fa fa-trash-o", "aria-hidden": "true" })
+                                'div',
+                                {
+                                    className: 'delete',
+                                    onClick: _this.props.deleteBill.bind(null, index)
+                                },
+                                _react2.default.createElement('i', { className: 'fa fa-trash-o', 'aria-hidden': 'true' })
                             )
                         )
                     );
                 });
             } else {
                 return _react2.default.createElement(
-                    "li",
-                    { className: "bill" },
+                    'li',
+                    { className: 'bill' },
                     _react2.default.createElement(
-                        "div",
-                        { className: "no-bills" },
-                        "No Bills Please Add A Bill"
+                        'div',
+                        { className: 'no-bills' },
+                        'No Bills Please Add A Bill'
                     )
                 );
             }
@@ -400,32 +435,32 @@ var AllBills = function (_Component) {
     }
 
     _createClass(AllBills, [{
-        key: "render",
+        key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                "section",
-                { id: "AllBills" },
+                'section',
+                { id: 'AllBills' },
                 _react2.default.createElement(
-                    "div",
-                    { className: "container" },
+                    'div',
+                    { className: 'container' },
                     _react2.default.createElement(
-                        "div",
-                        { className: "total-bills" },
+                        'div',
+                        { className: 'total-bills' },
                         _react2.default.createElement(
-                            "div",
-                            { className: "text" },
-                            "Total Amount:"
+                            'div',
+                            { className: 'text' },
+                            'Total Amount:'
                         ),
                         _react2.default.createElement(
-                            "div",
-                            { className: "number" },
-                            "$",
+                            'div',
+                            { className: 'number' },
+                            '$',
                             this.billsTotalAmount()
                         )
                     ),
                     _react2.default.createElement(
-                        "ul",
-                        { className: "bills-list" },
+                        'ul',
+                        { className: 'bills-list' },
                         this.showAllBills()
                     )
                 )

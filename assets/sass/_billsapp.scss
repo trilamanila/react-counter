@@ -46,6 +46,7 @@
       background: white;
       border-radius: 10px;
       width: 90%;
+      overflow: hidden;
       -webkit-box-shadow: 0px -10px 31px -9px rgba(173, 173, 173, 1);
       -moz-box-shadow: 0px -10px 31px -9px rgba(173, 173, 173, 1);
       box-shadow: 0px -10px 31px -9px rgba(173, 173, 173, 1);
@@ -57,6 +58,10 @@
         position: relative;
         overflow: hidden;
         height: 82px;
+        background: white;
+        &.active{
+          background: #abf441;
+        }
         &:hover{
           .buttons{
             transform: translate3d(0, 0, 0)
@@ -109,8 +114,6 @@
            }
            .delete{
              background: #f44242;
-             border-top-right-radius: 10px;
-             border-bottom-right-radius: 10px;
              display: flex;
              justify-content: center;
              align-items: center;

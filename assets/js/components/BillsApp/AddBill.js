@@ -6,7 +6,8 @@ export default class AllBills extends Component {
         super();
         this.state = {
             business_name: '',
-            price: 0
+            price: '',
+            status: 'unpaid'
         };
     }
     inputChange = () => {
@@ -24,7 +25,7 @@ export default class AllBills extends Component {
         event.preventDefault();
         this.setState({
             business_name: '',
-            price: 0
+            price: ''
         });
         this.props.saveBill(this.state);
         console.log(this.state);

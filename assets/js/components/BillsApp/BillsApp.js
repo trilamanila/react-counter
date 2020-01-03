@@ -13,7 +13,8 @@ export default class BillsApp extends Component {
             allBills: [
                 {
                     business_name: 'geico',
-                    price: 50
+                    price: 50,
+                    status: 'paid'
                 }
             ]
         };
@@ -37,11 +38,38 @@ export default class BillsApp extends Component {
             }
         )
     };
+    changeBillStatus = billIndex => {
+        const allBills = this.state.allBills;
+        const bill = allBills[billIndex];
+        if(bill.status == 'unpaid'){
+            bill.status = 'paid';
+        } else {
+            bill.status = 'unpaid';
+        }
+
+        const newState = update(this.state, { allBills: {
+            $set: allBills
+            }
+        });
+        this.setState(newState, () => {
+            console.log(this.state);
+        });
+    };
+    deleteBill = billIndex => {
+        const allBills = this.state.allBills;
+        allBills.splice(billIndex, 1);
+        const newState = update(this.state, { allBills: { $set: allBills } });
+        this.setState(newState;)
+
+        console.log(billIndex);
+    };
 render() {
     return (
         <div id="BillsApp">
             <Header />
-            <AllBills allBills={this.state.allBills} />
+            <AllBills allBills={this.state.allBills} changeBillStatus={this.changeBillStatus}
+            deleteBill={this.deleteBill}
+            />
             <AddBill 
             addBillOpen={this.state.addBillOpen}
             saveBill={this.saveBill}

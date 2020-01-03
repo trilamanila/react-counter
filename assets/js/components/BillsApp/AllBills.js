@@ -11,7 +11,10 @@ export default class AllBills extends Component {
         if(bills.length > 0 ) {
             return bills.map((bill, index) => {
                 return (
-                    <li className="bill" key={index}>
+                    <li 
+                    className={`bill ${bill.status == 'paid' ? 'active' : ''}`} 
+                    key={index}
+                    >
                         <div className="company">
                             <div className="logo">
                                 <img src="https://cdn3.iconfinder.com/data/icons/industrial-and-construction-1-3/68/44-512.png" />
@@ -20,8 +23,17 @@ export default class AllBills extends Component {
                         </div>
                         <div className="price">-${bill.price}</div>
                         <div className="buttons">
-                        <div className="paid"><i className="fa fa-check" aria-hidden="true"></i></div>
-                        <div className="delete"><i className="fa fa-trash-o" aria-hidden="true"></i></div>
+                        <div 
+                        className="paid"
+                        onClick={this.props.changeBillStatus.bind(null, index)}
+                        >
+                        <i className="fa fa-check" aria-hidden="true"></i>
+                        </div>
+                        <div 
+                        className="delete"
+                        onClick={this.props.deleteBill.bind(null, index)}
+                        >
+                        <i className="fa fa-trash-o" aria-hidden="true"></i></div>
                         </div>
                     </li>
             );
