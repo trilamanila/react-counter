@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import update from 'immutability-helper';
+import PropTypes from 'prop-types'
 
 console.dir(document.getElementByID('testing'));
 
@@ -16,25 +17,22 @@ render() {
         return ( 
         <div id="advanceFeatures">
         <div ref={this.billRef}>Billy</div>
-        <Menu />
+        <ChildComp />
         </div>
         );
     }
 }
-const Menu = () => {
-    return (
-        <nav id="menu">
-        <Links />
-        </nav>
-    );
-};
-const Links = () => {
-    return (
-    <Fragment>
-        <a href="#">Home</a>
-        <a href="#">Home</a>
-        <a href="#">Home</a>
-    </Fragment>
-    );
+const ChildComp = (props) => {
+    return (<div>
+    {props.numberA + props.numberB}
+    </div>)
 };
 
+ChildComp.defaultProps = {
+    numberA: '1',
+    numberB: '2'
+}
+ChildComp.PropTypes = {
+    numberA: PropTypes.string,
+    numberB: PropTypes.string
+}
