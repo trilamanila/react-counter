@@ -28,33 +28,75 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Immutable = function (_Component) {
-    _inherits(Immutable, _Component);
+console.dir(document.getElementByID('testing'));
 
-    function Immutable() {
-        _classCallCheck(this, Immutable);
+var Advance = function (_Component) {
+    _inherits(Advance, _Component);
 
-        var _this = _possibleConstructorReturn(this, (Immutable.__proto__ || Object.getPrototypeOf(Immutable)).call(this));
+    function Advance() {
+        _classCallCheck(this, Advance);
+
+        var _this = _possibleConstructorReturn(this, (Advance.__proto__ || Object.getPrototypeOf(Advance)).call(this));
 
         _this.state = {};
+        _this.billRef = _react2.default.createRef();
         return _this;
     }
 
-    _createClass(Immutable, [{
+    _createClass(Advance, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            console.log(this.billRef.current);
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
                 'div',
                 { id: 'advanceFeatures' },
-                'Text'
+                _react2.default.createElement(
+                    'div',
+                    { ref: this.billRef },
+                    'Billy'
+                ),
+                _react2.default.createElement(Menu, null)
             );
         }
     }]);
 
-    return Immutable;
+    return Advance;
 }(_react.Component);
 
-exports.default = Immutable;
+exports.default = Advance;
+
+var Menu = function Menu() {
+    return _react2.default.createElement(
+        'nav',
+        { id: 'menu' },
+        _react2.default.createElement(Links, null)
+    );
+};
+var Links = function Links() {
+    return _react2.default.createElement(
+        _react.Fragment,
+        null,
+        _react2.default.createElement(
+            'a',
+            { href: '#' },
+            'Home'
+        ),
+        _react2.default.createElement(
+            'a',
+            { href: '#' },
+            'Home'
+        ),
+        _react2.default.createElement(
+            'a',
+            { href: '#' },
+            'Home'
+        )
+    );
+};
 
 /***/ }),
 
@@ -246,7 +288,7 @@ var App = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'container' },
-                _react2.default.createElement(_BillsApp2.default, null)
+                _react2.default.createElement(_Advance2.default, null)
             );
         }
     }]);

@@ -15,9 +15,9 @@ class App extends Component {
 render() {
         return (
             <div className={'container'}>
-            <BillsApp />
+            {/* <BillsApp /> */}
                 {/* <Counter status="auto" /> */}
-                {/* <Advance /> */}
+                <Advance />
             </div>
         );
     }
